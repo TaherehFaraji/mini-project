@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>کارنامه دانش آموز</title>
+</head>
+
+<body>
+    <script>
+        let studentName = prompt("لطفا نام دانش آموز را وارد کنید:")
+        let numlessons = prompt("تعداد دروس دانش آموز را مشخص کنید:")
+        let scores = []
+
+        for (let i = 1; i <= numlessons; i++) {
+            let score = Number(prompt(`نمره درس را وارد کنید:درس ${i}`));
+            scores.push(score);
+        }
+        function average(scores) {
+            sum = 0
+            for (let i = 0; i < scores.length; i++) {
+                sum += scores[i];
+            }
+            return sum / scores.length
+        }
+        function status(scores) {
+            switch (true) {
+                case (scores === 20):
+                    return "خیلی خوب"
+                case (scores < 20 && scores > 15):
+                    return "خوب"
+                case (scores < 15 && scores > 10):
+                    return "قابل قبول"
+                default:
+                    return "مردود"
+            }
+        }
+
+        let student = {
+            name: studentName,
+            scores: scores,
+            average: average(scores),
+            status: status(average(scores)),
+        }
+
+        console.log("کارنامه دانش آموز :");
+
+        for (let key in student) {
+            console.log(key + ":" + student[key])
+        }
+    </script>
+</body>
+
+</html>
