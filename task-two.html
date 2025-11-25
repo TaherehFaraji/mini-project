@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To do list</title>
+</head>
+
+<body>
+    <script>
+        let todos = []
+
+        menu();
+
+
+        function addTasks() {
+            let task = prompt("Add new task !");
+            todos.push(task.trim());
+            console.log(`You added : ${task}`)
+        }
+
+        function deleteTask() {
+            let remove = prompt("Choose your task and delete it :");
+            remove.trim();
+            todos.includes(remove);
+            if (true) {
+                let index = todos.indexOf(remove);
+                todos.splice(index, 1);
+                console.log("Deleted successfully !");
+            } else {
+                console.log("Not found")
+            }
+
+        }
+
+        function showTask() {
+            for (let key in todos) {
+                console.log(key + ":" + todos[key]);
+            }
+        }
+
+        function menu() {
+            let choice = prompt(
+                "choose an option :" +
+                "1..Add tasks" +
+                "2..Delete tasks" +
+                "3..show tasks" +
+                "4..Exit"
+            );
+            switch (choice) {
+                case "1": addTasks();
+                    break;
+                case "2": deleteTask();
+                    break;
+                case "3": showTask();
+                    break;
+                case "4": console.log("Exited");
+                    return;
+                default: console.log("Invalid choice!!");
+
+            }
+            menu();
+        }
+    </script>
+</body>
+
+</html>
