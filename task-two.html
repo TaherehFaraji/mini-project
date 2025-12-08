@@ -60,7 +60,85 @@
             }
             menu();
         }
+
+
+        //کد درست 
+
+        let todos = [];
+
+        function showMenu() {
+            console.log(`
+        ===== To-Do List Menu =====
+        1. Add a new task
+        2. Show all tasks
+        3. Delete a task
+        4. Clear all tasks
+        5. Exit
+        ===========================
+        `);
+        }
+
+        function addTask() {
+            let task = prompt("Enter a new task:");
+            todos.push(task);
+            console.log(`✅ Task added: ${task}`);
+        }
+
+        function showTasks() {
+            if (todos.length === 0) {
+                console.log("❗️ No tasks available.");
+            } else {
+                console.log("📋 Your tasks:");
+                todos.forEach((t, i) => console.log(`${i + 1}. ${t}`));
+            }
+        }
+
+        function deleteTask() {
+            showTasks();
+            let index = Number(prompt("Enter task number to delete:")) - 1;
+            if (index >= 0 && index < todos.length) {
+                let removed = todos.splice(index, 1);
+                console.log(`❌ Deleted: ${removed[0]}`);
+            } else {
+                console.log("Invalid index!");
+            }
+        }
+
+        function clearAll() {
+            todos = [];
+            console.log("🧹 All tasks cleared!");
+        }
+
+        let running = true;
+
+        while (running) {
+            showMenu();
+            let choice = prompt("Choose an option (1-5):");
+
+            switch (choice) {
+                case "1":
+                    addTask();
+                    break;
+                case "2":
+                    showTasks();
+                    break;
+                case "3":
+                    deleteTask();
+                    break;
+                case "4":
+                    clearAll();
+                    break;
+                case "5":
+                    running = false;
+                    console.log("👋 Exiting program...");
+                    break;
+                default:
+                    console.log("Invalid choice, please try again.");
+            }
+        }
+
     </script>
+
 </body>
 
 </html>

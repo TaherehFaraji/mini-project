@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
 <script>
-    let sentence = "I bought red T-shirt"
+    function myIncludes(text, search) {
+        // اگر عبارت جستجو خالی باشد، طبق استاندارد باید true برگردانیم
+        if (search.length === 0) return true;
 
-    //blue?
-    function includes() {
-        let array = sentence.split(" ");
-        for (let letter of array) {
-            
+        for (let i = 0; i <= text.length - search.length; i++) {
+            let found = true;
+
+            // مقایسه‌ی کاراکتر به کاراکتر
+            for (let j = 0; j < search.length; j++) {
+                if (text[i + j] !== search[j]) {
+                    found = false;
+                    break;
+                }
+            }
+
+            if (found) return true;
         }
+
+        return false;
     }
-    console.log(includes(sentence))
+
+    // مثال
+    let sentence = "Learning JavaScript is fun!";
+    console.log(myIncludes(sentence, "Java")); // true
 </script>
 
 </html>
